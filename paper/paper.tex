@@ -7,6 +7,8 @@
 \usepackage{amsthm}
 \usepackage{paralist}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{cite}
 \titleformat{\subsubsection}[runin]{}{}{}{}[]
 \renewcommand{\labelenumi}{\alph{enumi}.}
 \pagestyle{fancyplain}
@@ -16,8 +18,12 @@
 \rhead{Tom, Brian, Evan}
 \cfoot{\today}
 
+\bibliographystyle{usrt}
+
 \begin{document}
-\include{brian}
-\include{tom}
-\include{evan}
+\input{evan}
+\input{tom}
+\input{brian}
+
+\bibliography{citations}
 \end{document}

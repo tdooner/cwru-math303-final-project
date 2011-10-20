@@ -3,3 +3,6 @@
 *.dvi
 *.pdf
 *.swp
+*.bbl
+*.blg
+*.out
