@@ -1,0 +1,15 @@
+div.slide.cover {
+padding-top:6%;
+text-align:center;
+}
+div.slide.cover h1 {
+  margin-right:0px;
+  padding-right:0px;
+  font-size:3.5em;
+}
+div#LLTBox {
+  font-size:0.8em;
+}
+div#LLTBox-Bad {
+  font-size:0.5em;
+}
