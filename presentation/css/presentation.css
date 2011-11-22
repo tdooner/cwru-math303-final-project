@@ -20,3 +20,12 @@ div#LLTBox span.bad {
 div#LLTBox span.good {
     color:#05B31C;
 }
+/* "Mersenne, And His Numbers" slide */
+div.slide#slide1 ul {
+    width:60%;
+}
+div.slide#slide1 img#mersenne {
+    height:50%;
+    float:right;
+    padding-right:10%;
+}
