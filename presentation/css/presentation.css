@@ -1,15 +1,27 @@
+/* font _by [Caroline Hadilaksono](http://www.hadilaksono.com) & [Micah Rich](http://micahrich.com)_ */
+@font-face {
+    font-family: "League Gothic";
+    src: url(League_Gothic-webfont.eot)  format(eot),
+         url(League_Gothic-webfont.woff) format(woff),
+         url(League_Gothic-webfont.ttf)  format(truetype),
+         url(League_Gothic-webfont.svg)  format(svg);
+}
+
+
 body {
+    font-family: "Helvetica";
     background-color: #D6E1E8;
-    color: #000;
+    color: #222;
+    text-shadow: #fff 1px 1px 2px;
 }
 div.slide.cover {
-padding-top:6%;
-text-align:center;
+    padding-top:6%;
+    text-align:center;
 }
 div.slide.cover h1 {
-  margin-right:0px;
-  padding-right:0px;
-  font-size:3.5em;
+    margin-right:0px;
+    padding-right:0px;
+    font-size:3.5em;
 }
 div#LLTBox {
     margin:auto 3%;
@@ -19,4 +31,16 @@ div#LLTBox span.bad {
 }
 div#LLTBox span.good {
     color:#05B31C;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "League Gothic";
+    color: #111;
+    text-shadow: #fff 1px 1px 4px;
+}
+
+span.control {
+    color: #444;
+    cursor: pointer;
+    cursor: hand;
 }
