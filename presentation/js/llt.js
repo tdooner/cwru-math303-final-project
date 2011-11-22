@@ -13,9 +13,9 @@ var LLT = function(p) {
 var RunLLT = function(i,max) {
     a = TimeLLT(i)
     if (a["result"] == true) {
-       document.getElementById("LLTBox").innerHTML += "Found prime, p=" + i + " (" + a["elapsed"] + " msec)<br>" 
+        $("#llt-"+i).addClass("good");
     } else {
-       document.getElementById("LLTBox-Bad").innerHTML += i + " "; 
+        $("#llt-"+i).addClass("bad");
     }
     if (i < max) {
         setTimeout("RunLLT("+(i+2)+","+max+")", 5);

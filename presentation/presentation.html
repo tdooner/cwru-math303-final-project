@@ -4,37 +4,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
 <head> 
   <title>Mersenne Primes</title> 
-  <link rel="stylesheet" type="text/css" media="screen, projection, print" href="slidy.css" /> 
+  <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/slidy.css" /> 
   <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/presentation.css"/>
   <script src="js/biginteger.js" type="text/javascript"></script> 
   <script src="js/llt.js" type="text/javascript"></script> 
   <script src="js/slidy.js" charset="utf-8" type="text/javascript"></script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/noisy/1.1/jquery.noisy.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('body').noisy({
+            intensity: 0.9, 
+            size: 200, 
+            opacity: 0.1,
+            monochrome: false
+        });
+        for (var i = 1; i <= 709; i+=2) {
+            $("#LLTBox").append("<span id='llt-"+i+"'>"+i+"</span> ");
+        }
+    });
+  </script>
 </head>
 <body>
 <div class="slide cover">
     <h1>Mersenne Primes</h1>
     <p>Tom Dooner, Brian Stack</p>
-
 </div>
 <div class="slide">
-    <h1>Lucas-Lehmer Test</h1>
-    <p>Here I am trying an implementation of LLT in Javascript just for fun...</p>
-    <a onClick="javascript:RunLLT(1,610);this.style.display='none';">Run the Test!</a>
+    <h1>Interactive Lucas-Lehmer Test</h1>
+    <p>This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes.
+    <a onClick="javascript:RunLLT(1,709);this.style.display='none';">Run the Test!</a></p>
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
-    <table width="100%">
-        <tr>
-            <td width="50%">
-            <div id="LLTBox">
-            Mersenne Primes Found:<br />
-            </div>
-            </td>
-            <td width="50%" style="vertical-align:top;">
-            <div id="LLTBox-Bad">
-            Attempted:<br />
-            </div>
-            </td>
-        </tr>
-    </table>
+    <div id="LLTBox">
+    </div>
 </div>
 </body>
 </html>
