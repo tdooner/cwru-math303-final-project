@@ -11,6 +11,7 @@
   <script src="js/slidy.js" charset="utf-8" type="text/javascript"></script> 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/noisy/1.1/jquery.noisy.min.js" type="text/javascript"></script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){
         $('body').noisy({
@@ -29,6 +30,25 @@
 <div class="slide cover">
     <h1>Mersenne Primes</h1>
     <p>Tom Dooner, Brian Stack</p>
+</div>
+<div class="slide" id="slide1">
+    <h1>Mersenne, And His Numbers</h1>
+    <img src="images/File_MarinMersenne.jpg" id="mersenne">
+    <ul>
+        <li><b>Marin Mersenne</b> (1588-1648) was a prolific mathematician and music theorist.</li>
+        <li>Mersenne Numbers are of the form $$M_p = 2^{n} - 1$$</li>
+        <li>Mersenne conjectured that \(M_p\) is prime for \(n=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\) (\(0 < n \leq 257)\)</li>
+        <li>The Mersenne Numbers that are prime are called <b>Mersenne Primes</b>.</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Properties of Mersenne Primes</h1>
+    <ul>
+        <li>\(2^n-1\) is prime implies that \(n\) is prime!</li>
+        <li><b>Lenstra-Pomerance-Wagstaff Conjecture:</b> There are infinitely many Mersenne Primes?</li>
+        <li>There are <b>fourty-seven</b> known Mersenne Primes.</li>
+        <li>For \(n\leq257\), \(2^n-1\) is prime for \(n=2, 3, 5, 7, 13, 17, 19, 31, \textbf{61}, \textbf{89}, \textbf{107}, 127\). (67 and 257 are composite)</li>
+    </ul>
 </div>
 <div class="slide">
     <h1>Interactive Lucas-Lehmer Test</h1>
