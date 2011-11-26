@@ -35,19 +35,82 @@
     <h1>Mersenne, And His Numbers</h1>
     <img src="images/File_MarinMersenne.jpg" id="mersenne">
     <ul>
-        <li><b>Marin Mersenne</b> (1588-1648) was a prolific mathematician and music theorist.</li>
-        <li>Mersenne Numbers are of the form $$M_p = 2^{n} - 1$$</li>
-        <li>Mersenne conjectured that \(M_p\) is prime for \(n=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\) (\(0 < n \leq 257)\)</li>
+        <li><b>Marin Mersenne</b> (1588-1648) was a prolific French mathematician and music theorist.</li>
+        <li>Lived in the same era as Galileo, Huygens, Fermat, and religious science oppression.</li>
+        <!-- Was center of a group of science people. -->
+        <li>Mersenne Numbers are of the form $$M_n = 2^{n} - 1$$</li>
         <li>The Mersenne Numbers that are prime are called <b>Mersenne Primes</b>.</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Mersenne Primes</h1>
+    <ul>
+        <li>When is \( M_n = 2^n - 1\) prime?</li>
+        <li>If \( n \) is composite, it can be written as \( a * b \)</li>
+        <!-- TODO: VERIFY THIS: -->
+        <li>\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</li>
+        <li>So if \( n \) is composite, so too is \( M_n \).
+            <ul><li>The converse is not true.</li><li>When searching for Mersenne Primes, only bother with prime \( n \).</li></ul>
+        </li>
+    </ul>
+</div>
+<div class="slide">
+    <!-- Information from: http://www.jstor.org/stable/2323195 -->
+    <h1>Mersenne's Conjecture</h1>
+    <ul>
+        <li>Of the fifty-five primes \(0 < n \leq 257\), Mersenne conjectured that \(M_p\) is prime for \(p=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\)</li>
+        <li>How Mersenne picked these numbers is a bit mysterious.</li>
+        <li>"\( M_p \) is prime if and only if \( p \) is a prime of one of the forms \( 2^k \pm 1 \) or \( 2^{2k} \pm 3 \)"?</li>
+        <li>Except, he omitted \( p = 61 \)...</li>
+        <li>So, given the lack of computational aide Mersenne had, is his list correct?</li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Mersenne's List Isn't Correct</h1>
+    <ul>
+        <li><b>No, but it's pretty close.</b> Mersenne conjectured that \(M_p\) is prime for \(p=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\)</li>
+        <li><table><tr><td><b>Mersenne:</b></td>
+        <td>2</td><td>3</td><td>5</td><td>7</td><td>13</td><td>17</td><td>19</td><td>31</td><td> </td><td>67</td><td> </td><td> </td><td>127</td><td>257</td>
+        </tr><tr>
+        <td><b>Corrected:</b><td>2</td><td>3</td><td>5</td><td>7</td><td>13</td><td>17</td><td>19</td><td>31</td><td>61</td><td> </td><td>89</td><td>107</td><td>127</td><td> </td>
+        </tr></table></li>
+        <li><b>New Mersenne Conjecture</b> attempts to be more comprehensive. It says that if two of these are true, the third is as well:
+        <ul>
+            <li>\( p = 2^k\pm1 \) or \( p = 2^{2k}\pm3 \).</li>
+            <li>\( (2^{p}+1)/3 \) is prime.</li> <!-- A "Wagstaff prime" -->
+            <li>\( M_p \) is prime.</li>
+            <li>Tested for all \( p < 100000 \), \( k < 4000 \).</li>
+        </li>
     </ul>
 </div>
 <div class="slide">
     <h1>Properties of Mersenne Primes</h1>
     <ul>
-        <li>\(2^n-1\) is prime implies that \(n\) is prime!</li>
-        <li><b>Lenstra-Pomerance-Wagstaff Conjecture:</b> There are infinitely many Mersenne Primes?</li>
-        <li>There are <b>forty-seven</b> known Mersenne Primes.</li>
-        <li>For \(n\leq257\), \(2^n-1\) is prime for \(n=2, 3, 5, 7, 13, 17, 19, 31, \textbf{61}, \textbf{89}, \textbf{107}, 127\). (67 and 257 are composite)</li>
+        <li><b>Lenstra-Pomerance-Wagstaff Conjecture:</b> There are infinitely many Mersenne Primes.
+            <ul>
+                <li>Number of primes approximated by \( e^{\gamma}\cdot\log\log(x)/\log(2) \) (\( \gamma = 0.57721... \))</li>
+            </ul>
+        </li>
+        <!-- Cite: Maple explorations, perfect numbers, and Mersenne primes. (in Academic Search Complete) -->
+        <li>Perfect numbers have a 1-to-1 correspondence with even perfect numbers.
+            <ul>
+                <li>Given \( M_p \), \( 2^{p-1}(2^p-1) \) is a perfect number.</li>
+                <li>p = 2, (2^1)(2^2-1) = 6</li>
+                <li>p = 3, (2^2)(2^3-1) = 28</li>
+                <li>p = 5, (2^5)(2^5-1) = 496</li>
+                <li>p = 7, (2^6)(2^7-1) = 8128</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>The Hunt for Mersenne Primes</h1>
+    <ul>
+        <li>Large prime numbers are important for encryption.</li>
+        <li>The Electronic Frontier Foundation has placed a bounty on primes of 1, 10, 100 million, and 1 billion digits to encourage "cooperative computing platforms".</li>
+        <li>The computing platform dedicated to hunting Mersenne Primes is GIMPS.</li>
+        <li>Of the <b>forty-seven</b> known Mersenne Primes, GIMPS has found the <b>twelve</b> largest.</li>
+        <li>\( M_{43,112,609} = 2^{43,112,609}-1 \) has almost 13 million digits.</li>
     </ul>
 </div>
 <div class="slide">

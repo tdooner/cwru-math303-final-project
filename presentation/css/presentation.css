@@ -18,6 +18,9 @@ div.slide.cover {
     padding-top:6%;
     text-align:center;
 }
+div.slide h1 {
+    padding-top:10pt;
+}
 div.slide.cover h1 {
     margin-right:0px;
     padding-right:0px;
