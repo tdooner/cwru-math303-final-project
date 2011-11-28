@@ -55,5 +55,14 @@ div.slide#slide1 ul {
 div.slide#slide1 img#mersenne {
     height:50%;
     float:right;
-    padding-right:10%;
+    position: relative;
+    right:10%;
+}
+
+img {
+    border: 2px solid #333;
+    -moz-box-shadow: 3px 5px 5px #222;
+    -webkit-box-shadow: 3px 5px 5px #222;
+    box-shadow: 3px 5px 5px #222;
+
 }

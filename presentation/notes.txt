@@ -1,0 +1,15 @@
+Speaker Notes:
+    <h1>Mersenne Primes</h1>
+    <h1>Mersenne, And His Numbers</h1>
+        <!-- Was center of a group of science people. -->
+    <h1>Mersenne Primes</h1>
+        <!-- TODO: VERIFY THIS: -->
+    <!-- Information from: http://www.jstor.org/stable/2323195 -->
+    <h1>Mersenne's Conjecture</h1>
+    <h1>Mersenne's List Isn't Correct</h1>
+            <li>\( (2^{p}+1)/3 \) is prime.</li> <!-- A "Wagstaff prime" -->
+    <h1>Properties of Mersenne Primes</h1>
+        <!-- Cite: Maple explorations, perfect numbers, and Mersenne primes. (in Academic Search Complete) -->
+    <h1>The Hunt for Mersenne Primes</h1>
+    <h1>Interactive Lucas-Lehmer Test</h1>
+    <!-- It hurts to use a table here, but I can't get the floats quite right -->
