@@ -1,3 +1,15 @@
+
+String.prototype.commatize = function(){
+    var ret = "";
+    var j = 0;
+    for (var i = this.length - 1; i > -1; i--){
+        j++;
+        ret = this.charAt(i) + ret;
+        if (j % 3 == 0 && j != this.length){ ret = "," + ret;}
+    }
+    return ret;
+}
+
 var LLT = function(p) {
     var s = BigInteger(4);
     var M = BigInteger(2).pow(p).subtract(1);
@@ -5,7 +17,7 @@ var LLT = function(p) {
         s = s.square().subtract(2).remainder(M);
     }
     if (s.compare(0) == 0) { // if (s == 0) {
-        $("#LLTPrime").html(M.toString());
+        $("#LLTPrime").html(M.toString().commatize());
         return true
     } else {                 // } else {
         return false
@@ -34,7 +46,6 @@ var TimeLLT = function(i) {
 }
 
 var Sieve = function(max) {
-    var valid = {};
     /* 
      * Fill valid with odd integers between 3 and max,
      * these will be the candidate primes.
@@ -46,25 +57,33 @@ var Sieve = function(max) {
      * Now go from 3 to max/2 and remove multiples 
      * from the valid set, the remaining ones will be prime.
      */ 
-    for (var i = 3; i < max / 2; i += 2){
-        var j = i * 2;
-        while (j <= max){
-            $("#siv-"+j).addClass("bad");
-            delete valid[j];
-            j = j + i;
-        }
+    sieveLoop(3, max);
+}
+
+var sieveLoop = function(i, max){
+    var j = i * 2;
+    innerSieve(j, i, max);
+    if (i < max / 2){
+        setTimeout(function(){sieveLoop(i + 2, max);}, 5);
     }
-    return valid;
+}
+
+var innerSieve = function(j, i, max){
+    $("#siv-"+j).addClass("bad");
+    delete valid[j];
+    if (j <= max){
+        setTimeout(function(){innerSieve(j + i, i, max);}, 120);
+    }
 }
 
 var Generate = function(max_prime){
     $("#siv-2").addClass("good");
-    var valid = Sieve(max_prime);
+    Sieve(max_prime);
+    setTimeout(function(){
     for (var i in valid){ 
         $("#siv-"+i).addClass("good");
         $("#LLTBox").append("<span id='llt-"+i+"'>"+i+"</span> ");
     }
+    }, 5 * max_prime);
     $("#llt-2").addClass("bad");
-    return valid;
 }
-

@@ -15,6 +15,7 @@
   <script type="text/javascript">
 	var max_prime = 1300;
 	var valid = {};
+	var pausemillis = 0;
     $(document).ready(function(){
         $('body').noisy({
             intensity: 0.9, 
@@ -121,7 +122,7 @@
     <h1>Sieve of Eratosthenes</h1>
 	<!-- To find large primes we must first generate small primes to use as p in 2^p - 1 -->
 	<div class="control">
-    	<span class="control" onClick="javascript:valid = Generate(max_prime);this.style.display='none';">Generate Primes!</span>
+    	<span class="control" onClick="javascript:Generate(max_prime);this.style.display='none';">Generate Primes!</span>
 	</div>
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
     <div id="SieveBox" class="smallerer">
