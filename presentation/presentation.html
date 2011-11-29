@@ -13,6 +13,8 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/noisy/1.1/jquery.noisy.min.js" type="text/javascript"></script>
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script type="text/javascript">
+	var max_prime = 1300;
+	var valid = {};
     $(document).ready(function(){
         $('body').noisy({
             intensity: 0.9, 
@@ -20,9 +22,11 @@
             opacity: 0.1,
             monochrome: false
         });
-        for (var i = 1; i <= 709; i+=2) {
-            $("#LLTBox").append("<span id='llt-"+i+"'>"+i+"</span> ");
-        }
+		$("#SieveBox").append("<span id='siv-"+2+"'>"+2+"</span> ");
+		$("#LLTBox").append("<span id='llt-"+2+"'>"+2+"</span> ");
+		for (var i = 3; i < max_prime; i+= 2){
+			$("#SieveBox").append("<span id='siv-"+i+"'>"+i+"</span> ");
+		}
     });
   </script>
 </head>
@@ -114,12 +118,33 @@
     </ul>
 </div>
 <div class="slide">
-    <h1>Interactive Lucas-Lehmer Test</h1>
-    <p>This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes.
-    <span class="control" onClick="javascript:RunLLT(1,709);this.style.display='none';">Run the Test!</span></p>
+    <h1>Sieve of Eratosthenes</h1>
+	<!-- To find large primes we must first generate small primes to use as p in 2^p - 1 -->
+	<div class="control">
+    	<span class="control" onClick="javascript:valid = Generate(max_prime);this.style.display='none';">Generate Primes!</span>
+	</div>
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
-    <div id="LLTBox">
+    <div id="SieveBox" class="smallerer">
     </div>
+</div>
+<div class="slide">
+    <h1>Interactive Lucas-Lehmer Test</h1>
+	<!-- This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes. -->
+	<div class="control">
+		<span class="control" onClick="javascript:RunLLT(0, Object.keys(valid));this.style.display='none';">Run the Test!</span>
+	</div>
+    <!-- It hurts to use a table here, but I can't get the floats quite right -->
+    <div id="LLTBox" class="smaller">
+    </div>
+	<div id="LLTPrime" class="center smallerer"></div>
+</div>
+<div class="slide">
+    <h1>Mersenne Numbers are Repunits!</h1>
+	<!-- Repunits are any numbers made up of repeated 1's -->
+	<!-- In binary notation powers of 2 are a single 1 followed by 0's -->
+	<!-- Therefore powers of 2 minus 1 are all 1's, and Mersenne numbers are repunits in binary -->
+	$$2^{10} = 1024 = (10000000000)_2$$
+	$$2^{10} - 1 = 1023 = (01111111111)_2$$
 </div>
 </body>
 </html>

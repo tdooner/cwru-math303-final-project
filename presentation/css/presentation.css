@@ -29,11 +29,18 @@ div.slide.cover h1 {
 div#LLTBox {
     margin:auto 3%;
 }
-div#LLTBox span.bad {
+span.bad {
     color:#A4A7B3;
 }
-div#LLTBox span.good {
+span.good {
     color:#05B31C;
+}
+
+.smallerer { font-size: 65% }
+
+div#LLTPrime {
+		margin-top: 20px;
+		word-wrap: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,8 +49,15 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: #fff 1px 1px 4px;
 }
 
+div.control {
+	text-align: center;
+	margin: 10px;
+	height: 30px;
+}
+
 span.control {
-    color: #444;
+	padding: 3px;
+    color: #266;
     cursor: pointer;
     cursor: hand;
 }
