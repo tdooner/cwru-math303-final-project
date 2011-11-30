@@ -29,6 +29,7 @@ div.toolbar {
   color: red;
   background-color: rgb(240,240,240);
   border-top: solid 1px rgb(180,180,180);
+  opacity: 0.4;
 }
 
 div.toolbar span.copyright {
