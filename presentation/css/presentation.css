@@ -43,6 +43,12 @@ div#LLTPrime {
 		word-wrap: break-word;
 }
 
+div#LLTPrime li {
+		border-bottom: 1px solid #ccc;
+		list-style: none;
+    	font-family: "League Gothic";
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "League Gothic";
     color: #111;
@@ -57,9 +63,9 @@ div.control {
 
 span.control {
 	padding: 3px;
-    color: #266;
     cursor: pointer;
     cursor: hand;
+    font-family: "League Gothic";
 }
 
 /* "Mersenne, And His Numbers" slide */
@@ -78,5 +84,15 @@ img {
     -moz-box-shadow: 3px 5px 5px #222;
     -webkit-box-shadow: 3px 5px 5px #222;
     box-shadow: 3px 5px 5px #222;
+
+}
+
+div.slide {
+		font-size: smaller;
+}
+
+pre {
+	text-shadow: none;
+	border: 1px solid #777;
 
 }

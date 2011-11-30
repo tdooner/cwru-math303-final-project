@@ -16,13 +16,14 @@ var LLT = function(p) {
     for (var i=0; i < (p-2); i++) {
         s = s.square().subtract(2).remainder(M);
     }
-    if (s.compare(0) == 0) { // if (s == 0) {
-        $("#LLTPrime").html(M.toString().commatize());
-        return true
-    } else {                 // } else {
-        return false
-    }                        // }
+    if (!s.compare(0)) {
+        $("#LLTPrime").prepend("<li>"+M.toString().commatize()+"</li>");
+        return true;
+    } else {                 
+        return false;
+    }                       
 }
+
 var RunLLT = function(i, sorted) {
     a = TimeLLT(sorted[i])
     if (a["result"] == true) {
