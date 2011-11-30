@@ -7,7 +7,10 @@ paper.pdf: paper.dvi paper.bbl
 	grep -n TODO ./*.tex >> ../TODO
 
 paper.dvi:  paper.tex tom.tex brian.tex evan.tex
-	latex paper.tex
+	latex paper
+	bibtex paper
+	latex paper
+	latex paper
 
 paper.bbl:  paper.dvi
 	bibtex paper

@@ -1,5 +1,7 @@
 Speaker Notes:
     <h1>Mersenne Primes</h1>
+	<h1>\(2^P - 1\)</h1>
+	<h1>May be prime!<h1>
     <h1>Mersenne, And His Numbers</h1>
         <!-- Was center of a group of science people. -->
     <h1>Mersenne Primes</h1>
@@ -11,5 +13,14 @@ Speaker Notes:
     <h1>Properties of Mersenne Primes</h1>
         <!-- Cite: Maple explorations, perfect numbers, and Mersenne primes. (in Academic Search Complete) -->
     <h1>The Hunt for Mersenne Primes</h1>
-    <h1>Interactive Lucas-Lehmer Test</h1>
+	<!-- TODO: Make this sieve simpler, not for drawing! -->
+    <h1>Sieve of Eratosthenes</h1>
+	<!-- To find large primes we must first generate small primes to use as p in 2^p - 1 -->
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
+    <h1>Interactive Lucas-Lehmer Test</h1>
+	<!-- This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes. -->
+    <!-- It hurts to use a table here, but I can't get the floats quite right -->
+    <h1>Mersenne Numbers are Repunits!</h1>
+	<!-- Repunits are any numbers made up of repeated 1's -->
+	<!-- In binary notation powers of 2 are a single 1 followed by 0's -->
+	<!-- Therefore powers of 2 minus 1 are all 1's, and Mersenne numbers are repunits in binary -->
