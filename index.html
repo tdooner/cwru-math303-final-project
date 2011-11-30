@@ -70,7 +70,7 @@
     <!-- Information from: http://www.jstor.org/stable/2323195 -->
     <h1>Mersenne's Conjecture</h1>
     <ul>
-        <li>Of the fifty-five primes \(0 < n \leq 257\), Mersenne conjectured that \(M_p\) is prime for \(p=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\)</li>
+        <li>Of the fifty-five primes \(0 &lt; n \leq 257\), Mersenne conjectured that \(M_p\) is prime for \(p=2, 3, 5, 7, 13, 17, 19, 31, 67, 127, 257\)</li>
         <li>How Mersenne picked these numbers is a bit mysterious.</li>
         <li>"\( M_p \) is prime if and only if \( p \) is a prime of one of the forms \( 2^k \pm 1 \) or \( 2^{2k} \pm 3 \)"?</li>
         <li>Except, he omitted \( p = 61 \)...</li>
@@ -91,7 +91,7 @@
             <li>\( p = 2^k\pm1 \) or \( p = 2^{2k}\pm3 \).</li>
             <li>\( (2^{p}+1)/3 \) is prime.</li> <!-- A "Wagstaff prime" -->
             <li>\( M_p \) is prime.</li>
-            <li>Tested for all \( p < 100000 \), \( k < 4000 \).</li>
+            <li>Tested for all \( p &lt; 100000 \), \( k &lt; 4000 \). </li>
         </li>
     </ul>
 </div>
@@ -134,7 +134,7 @@
 	     * Fill valid with odd integers between 3 and max,
 	     * these will be the candidate primes.
 	     */
-	    for (var i = 3; i < max; i += 2){
+	    for (var i = 3; i &lt; max; i += 2){
 		valid[i] = true;
 	    }
 	    /*
@@ -149,7 +149,7 @@
 	var LLT = function(p) {
 	    var s = BigInteger(4);
 	    var M = BigInteger(2).pow(p).subtract(1);
-	    for (var i=0; i < (p-2); i++) {
+	    for (var i=0; i &lt; (p-2); i++) {
 		s = s.square().subtract(2).remainder(M);
 	    }
 	    if (!s.compare(0)) {
