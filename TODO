@@ -1,8 +1,8 @@
-Mon Dec  5 02:14:52 EST 2011
+Mon Dec  5 02:25:39 EST 2011
 ./brian.tex:7:First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  %TODO: finish this line of thought and then go into process from THE MATH page  of gimps site
 ./brian.tex:13:The Lucas-Lehmer Test (LLT) is arguably the reason that we use Mersenne Numbers as our candidates for very large prime are Mersenne Primes.  It makes %TODO: continue this description. I just want to show math and examples now...
 ./brian.tex:15:%TODO: cite this stuff from Knuth later
 ./brian.tex:28:%TODO: THAT LAST LINE SUCKS PRETTY BAD, FIX IT
 ./evan.tex:19:%TODO: The last paragraph is nice content wise, but needs to flow better. In fact, the whole paper is like that...
 ./evan.tex:41:%TODO: ADD PROOF that composite powers will create composite mersennes
-./paper.tex:40:%\tableofcontents TODO: add this back in if the paper ends up long enough
+./paper.tex:44:%\tableofcontents TODO: add this back in if the paper ends up long enough
