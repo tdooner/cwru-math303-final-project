@@ -5,22 +5,51 @@ Speaker Notes:
     <h1>Mersenne, And His Numbers</h1>
         <!-- Was center of a group of science people. -->
     <h1>Mersenne Primes</h1>
-        <!-- TODO: VERIFY THIS: -->
+        <!-- So how do we determine if M_n is prime? -->
+        <!-- Well, there is one situation we learned already that limits the search to only *prime* n -->
+        <!-- We can limit search for prime M_n to prime n -->
+                <!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
+        <!-- So, we will change n->p, M_p = 2^p - 1 -->
     <!-- Information from: http://www.jstor.org/stable/2323195 -->
     <h1>Mersenne's Conjecture</h1>
+        <!-- Mersenne selected these 11 of the first 55 primes -->
+        <!--How Mersenne picked these numbers is a bit mysterious.-->
+        <!-- Except, he omitted p=61, which is prime and of the form 2^(2*3)-3 -->
+        <!-- So, given the lack of computational aide Mersenne had, is his list correct? -->
     <h1>Mersenne's List Isn't Correct</h1>
+        <!-- Is there a better, more comprehensive way to pick p? Yes. -->
+    <h1>New Mersenne Conjecture</h1>
+        <!-- A more precise and more comprehensive set of rules. -->
             <li>\( (2^{p}+1)/3 \) is prime.</li> <!-- A "Wagstaff prime" -->
+        <!-- We know it holds for all p < 100,000, k < 4,000 because all possible values have been tested. Unfortunately this is not a proof. -->
+        <!-- So this leads to the question: Are there infinitely many Mersenne Primes?? -->
     <h1>Properties of Mersenne Primes</h1>
+                <!-- Gamma is the Euler–Mascheroni constant, an irrational number that is the difference in area between 1/floor(x) and 1/x -->
+    <h1>Properties of Mersenne Primes (cont.)</h1>
         <!-- Cite: Maple explorations, perfect numbers, and Mersenne primes. (in Academic Search Complete) -->
+        <!-- Explain that perfect numbers have a sum of proper factors equal to itself. -->
+        <!-- It is unknown if there exist odd perfect numbers. There are certainly none below 10^300 -->
+                <!-- On board: <li>p = 2, (2^1)(2^2-1) = 6</li> -->
+                <!-- <li>p = 3, (2^2)(2^3-1) = 28</li> -->
+                <!-- <li>p = 5, (2^5)(2^5-1) = 496</li> -->
+                <!-- <li>p = 7, (2^6)(2^7-1) = 8128</li> -->
+    <h1>Properties of Mersenne Primes (cont.)</h1>
+	<!-- Repunits are any numbers made up of repeated 1's -->
+	<!-- In binary notation powers of 2 are a single 1 followed by 0's -->
+	<!-- Therefore powers of 2 minus 1 are all 1's, and Mersenne numbers are repunits in binary -->
     <h1>The Hunt for Mersenne Primes</h1>
+        <!-- Although relatively large primes are used in encryption, numbers the lengths of recent Mersenne Primes are not useful for much. -->
+        <!-- Except winning prizes from the EFF... -->
+        <!-- Mersenne primes are easy to test, so they have been far-and-away the largest prime numbers found. -->
+        <!-- To even verify a number like this, it took two 16-core machines sixteen days. -->
+    <h1>The Hunt for Mersenne Primes (the algorithm)</h1>
+        <!-- Err-ah-tos-thuh-nees -->
 	<!-- TODO: Make this sieve simpler, not for drawing! -->
+    <h1>Sieve of Eratosthenes</h1>
+    <h1>Lucas-Lehmer Test</h1>
     <h1>Sieve of Eratosthenes</h1>
 	<!-- To find large primes we must first generate small primes to use as p in 2^p - 1 -->
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
     <h1>Interactive Lucas-Lehmer Test</h1>
 	<!-- This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes. -->
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
-    <h1>Mersenne Numbers are Repunits!</h1>
-	<!-- Repunits are any numbers made up of repeated 1's -->
-	<!-- In binary notation powers of 2 are a single 1 followed by 0's -->
-	<!-- Therefore powers of 2 minus 1 are all 1's, and Mersenne numbers are repunits in binary -->
