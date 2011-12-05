@@ -7,7 +7,7 @@ Prime numbers are one of the most important, interesting, and ultimately frustra
 2^p - 1
 \label{eqn:mp}
 \end{align}
-
+%TODO: THIS IS DEFINED HERE AND IN SECTION 1.2 THIS IS A PROBLEM! FIX IT!
 where $p$ is a prime.  Standard notation for these numbers is $M_p$ where $p$ is the prime in the aforementioned formula.   These numbers also have quite a few interesting properties that have made them a popular area to work in. There is no sign that Mersenne Primes will lose their dominance of the search for ever larger primes any time soon.  The study of these numbers began some 400 years ago with a French monk named Marin Mersenne. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,6 +43,14 @@ composite number, a composite number will be generated. This can be shown by...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Mersenne Conjecture}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+\begin{tabular}{rcccccccccccccc}
+\textbf{Mersenne}&2&3&5&7&13&17&19&31&&67&&&127&257\\
+\textbf{Corrected}&2&3&5&7&13&17&19&31&61&&89&107&127&
+\end{tabular}
+\caption{The primes that Mersenne found and missed.}
+\label{fig:conj}
+\end{figure}
 
 The first of three Mersenne Conjectures appeared in Mersenne’s 1644 publication of 
 \textit{Cogita Physico-Mathematica}, in which Mersenne postulated that primes are generated for p = 2, 3, 5,
@@ -56,6 +64,11 @@ How did Mersenne arrive at his list, then? A theory, coincident with Mersenne's 
     M_p \text{ is prime if and only if $p$ is a prime of one of the forms } 2^k\pm1 \text{ or } 2^{2k}\pm3
 \end{equation}
 except that Mersenne did not include $p = 2^{6}-3 = 61$ in his list~\cite{newconjecture}!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Lenstra-Pomerance-Wagstaff Conjecture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Regardless, in 1989, P. T. Bateman, J. L. Selfridge and Wagstaff, Jr., S. published a revised Mersenne Conjecture.
 The \textit{New Mersenne Conjecture} seeks to clearly define the properties of Mersenne and Wagstaff primes\footnote{A Wagstaff prime is a number of the form $(2^p-1)/3$}.
