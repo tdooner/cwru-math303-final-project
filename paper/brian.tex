@@ -1,10 +1,90 @@
-%\section{Computing Mersenne Primes In The Modern Era}
-%The creation of modern computers has permitted us to explore larger and larger Mersenne Numbers.  Today we find the largest known primes through the use of Mersenne Numbers and the Lucas-Lehmer test. 
-%\subsection{Great Internet Mersenne Prime Search}
-%\subsection{Lucas-Lehmer Test}
-%\section{Uses of Mersenne Primes}
-%Mersenne Primes are not only studied to satisfy mathematical curiosity.  They have been found to be useful in a number of different applications.  
-%\subsection{Mersenne Twister}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Finding Mersenne Primes}
-The advent of the modern computer has allowed us to find larger and larger Mersenne Primes.  The process is fairly straightforward from a high level, but the implementation details are of great importance and interest. The Great Internet Mersenne Prime Search (GIMPS) has been the most successful project in this regard and we will examine their algorithms as an example.   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The advent of the modern computer has allowed us to find larger and larger Mersenne Primes.  The process is fairly straightforward from a high level, but the implementation details are of great importance and interest. The Great Internet Mersenne Prime Search (GIMPS) has been the most successful project in this regard and we will examine their process as an example.  The description of their process comes directly from GIMPS \cite{gimps} in a section on how the math behind the search works. 
+
+First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  %TODO: finish this line of thought and then go into process from THE MATH page  of gimps site
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lucas-Lehmer Test}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The Lucas-Lehmer Test (LLT) is arguably the reason that we use Mersenne Numbers as our candidates for very large prime are Mersenne Primes.  It makes %TODO: continue this description. I just want to show math and examples now...
+
+%TODO: cite this stuff from Knuth later
+
+We will present the LLT as a theorem and present a proof from Knuth \cite{taocp} of its correctness.
+
+\begin{thm} 
+Let $p$ be a prime other than 2 and define a sequence $L_n$ by the rule
+\begin{align}
+L_0 = 4,&&L_{n+1} = L_n^2 - 2 \pmod{2^p - 1}
+\end{align}
+Then $2^p - 1$ is prime iff $L_{p-2} = 0$.
+\end{thm}
+
+This sequence is remarkably simple, and the fact that it works at all is somewhat surprising. Once it is understood however, it is makes sense.  
+%TODO: THAT LAST LINE SUCKS PRETTY BAD, FIX IT
+\begin{proof}
+Define two new sequences
+\begin{align}
+U_0 = 0,& U_1 = 1,& U_{n+1} = 4U_n - U_{n-1}\\ 
+V_0 = 2,& V_1 = 4,& V_{n+1} = 4V_n - V_{n-1}
+\end{align}
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Pseudocode}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The sequence definition above is sufficient if we merely wish to understand what the algorithm does, but does not explicitly show each step involved.  We can redefine it in pseudocode very similar to what would actually be programmed into a computer that is testing for primality and then use it to try a couple of examples. We can also try to analyze the algorithm to see how efficient it is.
+
+\begin{codebox}
+\Procname{$\proc{LLT}(prime)$}
+\li$s = 4$
+\li$M = 2^p - 1$
+\li \For $i \gets 0$ \To $p - 2$
+\Do\li
+$s = (s^2 - 2) \pmod{M}$
+\End\li
+\If $s == 0$
+\Then
+\li\Return True \li
+\Else
+\li\Return False \li
+\End
+\end{codebox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Example with prime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We can use the Mersenne Prime 7 to show how the algorithm executes when it is run on a prime.
+\begin{tabular}{ll}
+step 0&s = 4, $M = 2^7 -1 = 63$
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Example with composite} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We can use 11 to show how the algorithm executes when it is run on a composite number.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Uses of Mersenne Primes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Mersenne Primes are not only studied to satisfy mathematical curiosity.  They have been found to be useful in a number of different applications.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mersenne Twister}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Avoiding Mersenne Primes for Encryption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

@@ -1,21 +1,51 @@
-\documentclass[11pt, letterpaper]{article}
+\documentclass[11pt]{amsart}
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{paralist}
 \usepackage{hyperref}
 \usepackage{cite}
+\usepackage{clrscode3e}
 
-\title{Mersenne Primes\\ \small{Math303 Final Project}}
-\author{Tom Dooner, Brian Stack \\\{ted27, bis12\}@case.edu}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture} 
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+
+\numberwithin{equation}{section}
 
 \bibliographystyle{ieeetr}
 
 \begin{document}
+\title{The History Present and Future of the Mersenne Primes}
+\date{\today}
+
+
+\thanks{This paper is for math 303 Introduction to Number Theory with David Singer at Case Western Reserve University. The authors would like to thank their mothers and the academy. We never could have done it without our wonderful director and of course the costume director Linda.}
+
+\author{Tom Dooner}
+\address{Case Western Reserve University, 
+Cleveland, OH 44106}
+\email{ted27@case.edu}
+
+\author{Brian Stack}
+\address{Case Western Reserve University, 
+Cleveland, OH 44106}
+\email{bis12@case.edu}
+
 \maketitle
+%\tableofcontents TODO: add this back in if the paper ends up long enough
+
+
 \input{evan}
 \input{tom}
 \input{brian}
 
+\bibliographystyle{plain}
 \bibliography{citations}
 \end{document}

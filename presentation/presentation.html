@@ -57,19 +57,24 @@
 </div>
 <div class="slide">
     <h1>Mersenne Primes</h1>
-    <ul>
         <!-- So how do we determine if M_n is prime? -->
-        <li>If \( n \) is composite, it can be written as \( a * b \)</li>
         <!-- Well, there is one situation we learned already that limits the search to only *prime* n -->
-        <li>\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</li> 
         <!-- We can limit search for prime M_n to prime n -->
-        <li>\( n \) is composite\( \to M_n \) is composite
-            <ul>
-                <!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
-                <li>The converse and inverse are not true.</li>
-                <li>When searching for Mersenne Primes, only try prime \( n \).</li>
-            </ul>
-        </li>
+    <h2>Theorem</h2>
+    <ul>
+    <h3>For \(2^n - 1\) to be prime, \(n\) must be prime.</h3>
+    </ul>
+    <h2>Proof</h2>
+    <ul>
+        <h3>If \( n \) is composite, it can be written as \( ab \)</h3>
+        <h3>\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</h3> 
+	<h3>\( \therefore  n \) is composite\( \to M_n \) is composite</h3>
+    </ul>
+    <h2>Corollaries</h2>
+    <ul>
+	<!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
+	<li>The converse and inverse are not true.</li>
+	<li>When searching for Mersenne Primes, only try prime \( n \).</li>
         <!-- So, we will change n->p, M_p = 2^p - 1 -->
     </ul>
 </div>
