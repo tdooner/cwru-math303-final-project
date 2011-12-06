@@ -44,16 +44,24 @@
 	<h1>\(2^P - 1\)</h1>
 	<h1>May be prime!<h1>
 </div>
-<div class="slide" id="slide1">
-    <h1>Mersenne, And His Numbers</h1>
-    <img src="images/File_MarinMersenne.jpg" id="mersenne">
-    <ul>
-        <li><b>Marin Mersenne</b> (1588-1648) was a prolific French mathematician and music theorist.</li>
-        <li>Lived in the same era as Galileo, Huygens, Fermat, and religious science oppression.</li>
-        <!-- Was center of a group of science people. -->
-        <li>Mersenne Numbers are of the form $$M_n = 2^{n} - 1$$</li>
-        <li>The Mersenne Numbers that are prime are called <b>Mersenne Primes</b>.</li>
-    </ul>
+<div class="slide cover" id="convo">
+    <!-- These primes are named after Marin Mersenne, a French Monk, mathemetician and music theorist -->
+    <!-- Mersenne is the guy on the right. The guy on the left is Fermat, someone who we are all familiar with by now -->
+    <!-- He and Mersenne corresponded frequently, but on Christmas day 1640, Fermat sent a note that struck a chord  NEXT SLIDE and caused Mersenne to have an idea that has carried his name throughout the centuries that followed -->
+    <!-- Fermat wrote of his discovery that certain primes could be written as the sum of two squares, which pushed Mersenne off in the direction of trying to find other similar formulae. -->
+    <!-- Here some suspect his musical background came into use.  Doubling a note raises it an octave, so one might expect that subtracting one from this would create a dissonant note, somewhat of a "prime note".-->
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pierre_de_Fermat.png/170px-Pierre_de_Fermat.png" id="fermat">
+    <span>&#9993;&rarr;</span>
+    <img src="http://www.gap-system.org/~history/BigPictures/Mersenne_3.jpeg" id="mersen">
+</div>
+<div class="slide cover bigt">
+HAHA
+<div class="tiny">Pun intended: Mersenne is known as the father of acoustics</div>
+</div>
+<div class="slide cover" id="convo">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pierre_de_Fermat.png/170px-Pierre_de_Fermat.png" id="fermat">
+    <span>&#9993;&rarr;</span>
+    <img src="http://www.gap-system.org/~history/BigPictures/Mersenne_3.jpeg" id="mersen">
 </div>
 <div class="slide">
     <h1>Mersenne Primes</h1>
@@ -61,20 +69,19 @@
         <!-- Well, there is one situation we learned already that limits the search to only *prime* n -->
         <!-- We can limit search for prime M_n to prime n -->
     <h2>Theorem</h2>
-    <ul>
-    <h3>For \(2^n - 1\) to be prime, \(n\) must be prime.</h3>
-    </ul>
+    <span class="proof">For \(2^n - 1\) to be prime, \(n\) must be prime.</span>
     <h2>Proof</h2>
-    <ul>
-        <h3>If \( n \) is composite, it can be written as \( ab \)</h3>
-        <h3>\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</h3> 
-	<h3>\( \therefore  n \) is composite\( \to M_n \) is composite</h3>
-    </ul>
-    <h2>Corollaries</h2>
+        <span class="proof">If \( n \) is composite, it can be written as \( ab \)</span>
+        <span class="proof">\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</span> 
+	<span class="proof">\( \therefore  n \) is composite &nbsp;\( \to M_n \) is composite</span>
+    </div>
+    <div class="slide">
+    <h1>Notes on Proof</h1>
     <ul>
 	<!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
-	<li>The converse and inverse are not true.</li>
-	<li>When searching for Mersenne Primes, only try prime \( n \).</li>
+	<span class="proof" style="margin-top:10%;">The converse and inverse are not true.</span>
+	<span class="proof">When searching for Mersenne Primes, only try prime \( n \).</span>
+	<span class="proof">From here on out, we'll change \(n\) to \(p\) to show this.</span>
         <!-- So, we will change n->p, M_p = 2^p - 1 -->
     </ul>
 </div>

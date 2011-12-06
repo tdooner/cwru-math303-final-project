@@ -95,3 +95,35 @@ pre {
 	border: 1px solid #777;
 
 }
+
+div#convo{
+	margin-top: 10%;
+	font-size: 800%;
+}
+
+img#mersen {
+	position: relative;
+	top: 20px;
+}
+
+div#convo span {
+	position: relative;
+	top: -100px;
+}
+
+div.bigt {
+	margin-top: 14%;
+	font-size: 1000%;
+}
+
+div.tiny {
+	margin-top: -10%;
+	font-size: 10%;
+}
+
+.proof {
+	display: block;
+	text-align: center;
+	line-height: 1.9em;
+	font-size: 1.2em;
+}
