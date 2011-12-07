@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/slidy.css" /> 
   <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/presentation.css"/>
   <link href="css/desert.css" type="text/css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <meta name="duration" content="23" />
   <script type="text/javascript" src="js/prettify.js"></script>
   <script src="js/biginteger.js" type="text/javascript"></script> 
@@ -75,10 +76,12 @@ HAHA
         <span class="proof">\( 2^{ab}-1\) factors to \((2^{a}-1)(2^a+2^{2a}+\ldots+2^{(b-1)a}+1)\)</span> 
 	<span class="proof">\( \therefore  n \) is composite &nbsp;\( \to M_n \) is composite</span>
     </div>
+    <!-- END BRIAN BEGIN TOM -->
     <div class="slide">
     <h1>Notes on Proof</h1>
     <ul>
-	<!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
+    <!-- Inverse:  p is prime -> M_n is prime -->
+	<!-- Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
 	<span class="proof" style="margin-top:10%;">The converse and inverse are not true.</span>
 	<span class="proof">When searching for Mersenne Primes, only try prime \( n \).</span>
 	<span class="proof">From here on out, we'll change \(n\) to \(p\) to show this.</span>
@@ -165,24 +168,36 @@ HAHA
 	$$2^{10} = 1024 = (10000000000)_2$$
 	$$2^{10} - 1 = 1023 = (1111111111)_2$$
 </div>
+<!-- END TOM BEGIN BRIAN -->
 <div class="slide cover">
 <h1>GIMPS</h1>
 <h3>The Great Internet Mersenne Prime Search</h3>
-<small>This is the distributed computing project that <b>17 or Bust</b> wishes it could be like.</small>
+<small>This is the distributed computing project that <b>Seventeen or Bust</b> wishes it could be like.</small>
 <h1>
 </div>
 <div class="slide">
     <h1>The Hunt for Mersenne Primes</h1>
     <ul>
-        <li>Large prime numbers are used in encryption.</li>
-        <!-- Although relatively large primes are used in encryption, numbers the lengths of recent Mersenne Primes are not useful for much. -->
-        <!-- Except winning prizes from the EFF... -->
-        <li><a href="https://www.eff.org/awards/coop">Bounty</a> on primes of 1, 10, 100 million, and 1 billion digits.</li>
+        <!-- Large primes win prizes from the EFF... -->
+        <!-- Now on Monday, there was a prize of getting your name in Wikipedia. Well, with Mersenne Primes you stand a chance of also winning a hefty sum of money. (150,000 or 250,000) -->
+        <!-- ...You could also technically win these with other large prime forms, but Mersenne Primes are by far the largest known primes. --> 
+        <li><a href="https://www.eff.org/awards/coop" target="_blank">Bounty</a> on primes of 1, 10, 100 million, and 1 billion digits.</li>
         <!-- Mersenne primes are easy to test, so they have been far-and-away the largest prime numbers found. -->
-        <li><a href="http://www.mersenne.org/">Great Internet Mersenne Prime Search</a> (GIMPS) uses idle computing time to search for primes.</li>
+        <li><a href="http://www.mersenne.org/" target="_blank">Great Internet Mersenne Prime Search</a> (GIMPS) uses idle computing time to search for primes.</li>
         <li>Of the <b>forty-seven</b> known Mersenne Primes, GIMPS has found the <b>twelve</b> largest.</li>
-        <li><a href="http://prime.isthe.com/chongo/tech/math/prime/m43112609/prime-c.html">\( M_{43,112,609}  \)</a> \( = 2^{43,112,609}-1 \) has almost 13 million digits!</li>
+        <li><a href="http://prime.isthe.com/chongo/tech/math/prime/m43112609/prime-c.html" target="_blank">\( M_{43,112,609}  \)</a> \( = 2^{43,112,609}-1 \) has almost 13 million digits!</li>
         <!-- To even verify a number like this, it took two 16-core machines sixteen days. -->
+    </ul>
+</div>
+<div class="slide">
+    <h1>The Hunt for Mersenne Primes (usefulness)</h1>
+    <ul>
+        <!-- Often, the media reports that encryption is benefitted by finding gargantuan primes. -->
+        <li style="margin-top:10%" class="proof">Gargantuan primes <b>are not</b> good for encryption.</li>
+        <!-- Decreases security because there are only a handful of primes to try. -->
+        <li class="proof">They are difficult to manipulate.</li>
+        <!-- It takes ages to manipulate these numbers using commodity hardware. -->
+        <li class="proof">But, they <b>are</b> really cool.</li>
     </ul>
 </div>
 <div class="slide">
@@ -190,7 +205,7 @@ HAHA
     <ol>
         <!-- Err-ah-tos-thuh-nees -->
         <li>Generate a list of prime numbers.<ul><li><b>Sieve of Eratosthenes</b></li><li>Pollard's (P-1) Method</li></ul></li>
-        <li>Check if \( 2^p - 1\) is prime as efficiently as possible.<ul><li><b>Lucas-Lehmer Test</b></li></ul></li>
+        <li>Check if \( 2^p - 1\) is prime as efficiently as possible.<ul><li><b>Lucas-Lehmer Test</b></li><li>Fast Fourier Transforms‽</ul></li>
     </ol>
 </div>
 <div class="slide">
@@ -198,20 +213,38 @@ HAHA
     <h1>Sieve of Eratosthenes</h1>
 	<pre class="prettyprint"><code>
 var Sieve = function(max) {
-    /* 
-     * Fill valid with odd integers between 3 and max,
-     * these will be the candidate primes.
-     */
+    /* Mark all odd numbers as valid */
     for (var i = 3; i < max; i += 2){
-    valid[i] = true;
+        valid[i] = true;
     }
-    /*
-     * Now go from 3 to max/2 and remove multiples 
-     * from the valid set, the remaining ones will be prime.
-     */ 
-    sieveLoop(3, max);
+    /* Eliminate any multiple of a number. */
+    // For each possible factor
+    for (var i = 3; i < Math.sqrt(max); i += 1) {  
+        // For each multiple of that factor,
+        for (var j = 1; i*j < max; j += 1) {       
+            // mark the number as composite.
+            valid[i*j] = false;
+        }
+    }
+    valid[2] = true;
+    return valid
 }
 	</code></pre>
+</div>
+<!-- END BRIAN BEGIN TOM -->
+<div class="slide">
+    <h1>Lucas-Lehmer Test</h1>
+    <h2>
+    $$ 
+    s_i = \left\{ 
+        \begin{eqnarray}
+            4           & \text{if $i = 0$} \\ 
+            s_{i-1}^2-2 & \text{otherwise}
+        \end{eqnarray} 
+        \right. 
+    $$
+    </h2>
+    <p style="text-align:center">\(M_p\) is prime iff \(s_{p-2} = 0\)</p>
 </div>
 <div class="slide">
     <h1>Lucas-Lehmer Test</h1>
@@ -251,6 +284,10 @@ var LLT = function(p) {
     </div>
     <!-- 2^1279 is 386 digits long and was discovered in 1952 -->
 	<div id="LLTPrime" class="center smallerer"></div>
+</div>
+<div class="slide">
+    <h1>Thanks!</h1>
+    <ul><li>Questions?</li></ul>
 </div>
 </body>
 </html>
