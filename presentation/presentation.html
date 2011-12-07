@@ -209,7 +209,7 @@ HAHA
     </ol>
 </div>
 <div class="slide">
-	<!-- TODO: Make this sieve simpler, not for drawing! -->
+<!-- END BRIAN BEGIN TOM -->
     <h1>Sieve of Eratosthenes</h1>
 	<pre class="prettyprint"><code>
 var Sieve = function(max) {
@@ -219,11 +219,13 @@ var Sieve = function(max) {
     }
     /* Eliminate any multiple of a number. */
     // For each possible factor
-    for (var i = 3; i < Math.sqrt(max); i += 1) {  
+    for (var i = 3; i <= Math.sqrt(max); i += 2) {  
+        //do not bother if this integer is not prime
+    	if (!valid[i]){continue;}
         // For each multiple of that factor,
-        for (var j = 1; i*j < max; j += 1) {       
+        for (var j = 3; i*j <= max; j += 2) {       
             // mark the number as composite.
-            valid[i*j] = false;
+            delete valid[i*j];
         }
     }
     valid[2] = true;
@@ -231,7 +233,6 @@ var Sieve = function(max) {
 }
 	</code></pre>
 </div>
-<!-- END BRIAN BEGIN TOM -->
 <div class="slide">
     <h1>Lucas-Lehmer Test</h1>
     <h2>
@@ -285,9 +286,9 @@ var LLT = function(p) {
     <!-- 2^1279 is 386 digits long and was discovered in 1952 -->
 	<div id="LLTPrime" class="center smallerer"></div>
 </div>
-<div class="slide">
+<div class="slide cover">
     <h1>Thanks!</h1>
-    <ul><li>Questions?</li></ul>
+    Questions?
 </div>
 </body>
 </html>
