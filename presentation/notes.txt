@@ -2,13 +2,19 @@ Speaker Notes:
     <h1>Mersenne Primes</h1>
 	<h1>\(2^P - 1\)</h1>
 	<h1>May be prime!<h1>
-    <h1>Mersenne, And His Numbers</h1>
-        <!-- Was center of a group of science people. -->
+    <!-- These primes are named after Marin Mersenne, a French Monk, mathemetician and music theorist -->
+    <!-- Mersenne is the guy on the right. The guy on the left is Fermat, someone who we are all familiar with by now -->
+    <!-- He and Mersenne corresponded frequently, but on Christmas day 1640, Fermat sent a note that struck a chord  NEXT SLIDE and caused Mersenne to have an idea that has carried his name throughout the centuries that followed -->
+    <!-- Fermat wrote of his discovery that certain primes could be written as the sum of two squares, which pushed Mersenne off in the direction of trying to find other similar formulae. -->
+    <!-- Here some suspect his musical background came into use.  Doubling a note raises it an octave, so one might expect that subtracting one from this would create a dissonant note, somewhat of a "prime note".-->
     <h1>Mersenne Primes</h1>
         <!-- So how do we determine if M_n is prime? -->
         <!-- Well, there is one situation we learned already that limits the search to only *prime* n -->
         <!-- We can limit search for prime M_n to prime n -->
-                <!-- Converse & Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
+    <!-- END BRIAN BEGIN TOM -->
+    <h1>Notes on Proof</h1>
+    <!-- Inverse:  p is prime -> M_n is prime -->
+	<!-- Inverse counterexample: M_11 = 2047 is composite (23x89) but 11 is prime. -->
         <!-- So, we will change n->p, M_p = 2^p - 1 -->
     <!-- Information from: http://www.jstor.org/stable/2323195 -->
     <h1>Mersenne's Conjecture</h1>
@@ -37,19 +43,30 @@ Speaker Notes:
 	<!-- Repunits are any numbers made up of repeated 1's -->
 	<!-- In binary notation powers of 2 are a single 1 followed by 0's -->
 	<!-- Therefore powers of 2 minus 1 are all 1's, and Mersenne numbers are repunits in binary -->
+<!-- END TOM BEGIN BRIAN -->
+<h1>GIMPS</h1>
+<h1>
     <h1>The Hunt for Mersenne Primes</h1>
-        <!-- Although relatively large primes are used in encryption, numbers the lengths of recent Mersenne Primes are not useful for much. -->
-        <!-- Except winning prizes from the EFF... -->
+        <!-- Large primes win prizes from the EFF... -->
+        <!-- Now on Monday, there was a prize of getting your name in Wikipedia. Well, with Mersenne Primes you stand a chance of also winning a hefty sum of money. (150,000 or 250,000) -->
+        <!-- ...You could also technically win these with other large prime forms, but Mersenne Primes are by far the largest known primes. --> 
         <!-- Mersenne primes are easy to test, so they have been far-and-away the largest prime numbers found. -->
         <!-- To even verify a number like this, it took two 16-core machines sixteen days. -->
+    <h1>The Hunt for Mersenne Primes (usefulness)</h1>
+        <!-- Often, the media reports that encryption is benefitted by finding gargantuan primes. -->
+        <!-- Decreases security because there are only a handful of primes to try. -->
+        <!-- It takes ages to manipulate these numbers using commodity hardware. -->
     <h1>The Hunt for Mersenne Primes (the algorithm)</h1>
         <!-- Err-ah-tos-thuh-nees -->
 	<!-- TODO: Make this sieve simpler, not for drawing! -->
     <h1>Sieve of Eratosthenes</h1>
+<!-- END BRIAN BEGIN TOM -->
+    <h1>Lucas-Lehmer Test</h1>
     <h1>Lucas-Lehmer Test</h1>
     <h1>Sieve of Eratosthenes</h1>
 	<!-- To find large primes we must first generate small primes to use as p in 2^p - 1 -->
     <!-- It hurts to use a table here, but I can't get the floats quite right -->
     <h1>Interactive Lucas-Lehmer Test</h1>
 	<!-- This JavaScript implementation of LLT illustrates the difficulty of searching for Mersenne Primes. -->
-    <!-- It hurts to use a table here, but I can't get the floats quite right -->
+    <!-- 2^1279 is 386 digits long and was discovered in 1952 -->
+    <h1>Thanks!</h1>
