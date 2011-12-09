@@ -13,11 +13,8 @@ First we will note that GIMPS is a distributed computing project.  There is a ma
 \subsection{Lucas-Lehmer Test}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The Lucas-Lehmer Test (LLT) is arguably the reason that we use Mersenne Numbers as our candidates for very large prime are Mersenne Primes.  It makes %TODO: continue this description. I just want to show math and examples now...
+Mersenne Primes are interesting in their own right, but the reason that we use them in projects like GIMPS is the Lucas-Lehmer test.  This test makes testing the primality of massive primes possible, and somehow remains simple to understand how it works.  The harder part is understanding why it works, but we'll present a proof that is fairly convincing from Rosen's \emph{A Proof of the Lucas-Lehmer Test}\cite{rosen}.
 
-%TODO: cite this stuff from Knuth later
-
-We will present the LLT as a theorem and present a proof from Knuth \cite{taocp} of its correctness.
 
 \begin{thm} 
 Let $p$ be a prime other than 2 and define a sequence $L_n$ by the rule
@@ -27,8 +24,8 @@ L_0 = 4,&&L_{n+1} = L_n^2 - 2 \pmod{2^p - 1}
 Then $2^p - 1$ is prime iff $L_{p-2} = 0$.
 \end{thm}
 
-This sequence is remarkably simple, and the fact that it works at all is somewhat surprising. Once it is understood however, it is makes sense.  
-%TODO: THAT LAST LINE SUCKS PRETTY BAD, FIX IT
+As mentioned before, the sequence is simple to understand 
+
 \begin{proof}
 Define two new sequences
 \begin{align}
@@ -40,7 +37,7 @@ V_0 = 2,& V_1 = 4,& V_{n+1} = 4V_n - V_{n-1}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Pseudocode}
+\subsubsection{Algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The sequence definition above is sufficient if we merely wish to understand what the algorithm does, but does not explicitly show each step involved.  We can redefine it in pseudocode very similar to what would actually be programmed into a computer that is testing for primality and then use it to try a couple of examples. We can also try to analyze the algorithm to see how efficient it is.
@@ -78,7 +75,7 @@ We can use 11 to show how the algorithm executes when it is run on a composite n
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Uses of Mersenne Primes}
+\section{Closing Notes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Mersenne Primes are not only studied to satisfy mathematical curiosity.  They have been found to be useful in a number of different applications.  
@@ -88,6 +85,13 @@ Mersenne Primes are not only studied to satisfy mathematical curiosity.  They ha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Avoiding Mersenne Primes for Encryption}
+\subsection{Maybe We Can Do Better}
+\label{sec:knuth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In 1980 Knuth published the second volume of \emph{The Art of Computer Programming}, which contains the following claim.
 
+\begin{quote}
+The world’s largest explicitly known prime numbers have always been Mersenne primes ... But the situation will probably change soon, since Mersenne primes are getting harder to find, and since [the exercises present] an efficient test for primes of other forms. \cite{taocp}
+\end{quote}
+
+%CONTINUE HERE WITH THE STUFF FROM KNUTH
