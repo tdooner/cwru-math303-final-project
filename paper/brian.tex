@@ -11,8 +11,8 @@ The advent of the modern computer has allowed us to find larger and larger Merse
 
 First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  For most clients this will mean that the run a Lucas-Lehmer test, which we will describe later.  Regardless of what each individual client does, the process to find prime candidates and ultimately Mersenne Primes is:
 \begin{description}
-\item[Forming and Exponent List]  We proved in equation (\ref{eqn:composite}) that $p$ must be prime in order for $2^p - 1$ to be prime.  We'll start out with a list of seed primes that need to be tested.
-\item[Trial Factoring] First we try to find a small factor for the candidate prime.  We take advantage of the fact that any factor of $2^p - 1$ must be of the form $2kp +1$ which we will leave unproven.  Numbers of this form are put through a Sieve of Eratosthenes to reduce the potential factors to prime factors.  Once mostly primes remain, we can try factoring the large prime. If it survives this stage, it will move on to the next.
+\item[Forming an Exponent List]  We proved in equation (\ref{eqn:composite}) that $p$ must be prime in order for $2^p - 1$ to be prime.  We'll start out with a list of seed primes that need to be tested.
+\item[Trial Factoring] First we try to find a small factor for the candidate prime.  We take advantage of the fact that any factor of $2^p - 1$ must be of the form $2kp +1$ (which we will leave unproven).  Numbers of this form are put through a Sieve of Eratosthenes to reduce the potential factors to prime factors.  Once mostly primes remain, we can try factoring the large prime. If it survives this stage, it will move on to the next.
 \item[Pollard's Method factoring] The large prime now is tested with Pollard's $(p - 1)$ method.  This is an efficient method for finding no-trivially large factors.  The convenient thing about Pollard's method is that we can set a smoothness bound to whatever value we like in order to trade off chances of finding a factor versus time and space.
 \item[Lucas-Lehmer Test] If a prime passes all of the above probabilistic tests, it will get checked with a deterministic algorithm, guaranteed to find whether or not a Mersenne Number is prime.  This test is described in more detail below.
 \item[Double Checking] The math taking place in the last step is extensive and errors are possible.  Prior to any sort of announcement of a new prime being found, we want to be very sure that the number is in fact prime.  Results are double checked on another machine to ensure this.
@@ -35,7 +35,7 @@ S_0 = 4,&&S_{n+1} = S_n^2 - 2 \pmod{2^p - 1}
 Then $2^p - 1$ is prime iff $S_{p-2} = 0$.
 \end{thm}
 
-I expect you'll agree that the sequence in (\ref{eqn:llt}) is as easy to comprehend as we promised. We won't cover the sufficiency of this theorem, but we will show necessity of the condition. The proof of sufficiency can be found in Rosen's article cited above if the reader is curious.    
+We won't cover the sufficiency of this theorem, but we will show necessity of the condition. The proof of sufficiency can be found in Rosen's article cited above if the reader is curious.    
 \begin{center}
 \begin{math}
 \begin{array}{cccc}
@@ -163,9 +163,11 @@ Mersenne Primes are not only studied to satisfy mathematical curiosity.  They ha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mersenne Twister}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In 1998, a paper was published detailing a new random number generator called a \emph{Mersenne Twister}.  This algorithms was the best ever created at that time having a period of $2^{19937} -1$ in addition to an excellent distribution\cite{mt}. Note that this value is a Mersenne Prime, giving this algorithm its name.  The algorithm was developed to generate random reals in the range [0,1], which hints at its intended purpose as a simulation tool. 
+In 1998, a paper was published detailing a new random number generator called a \emph{Mersenne Twister}.  The Mersenne Twister algorithm generates random numbers uniformly in a period of $2^{19937} -1$ in addition to providing an excellently even distribution\cite{mt}. The algorithm is named after Mersenne Primes since $2^{19937}-1$ is a Mersenne Prime.  The algorithm was developed to generate random reals in the range [0,1], which hints at its intended purpose as a simulation tool. 
 
-The algorithm has been highly successful and is still in use today in major computer software packages.  Notably, the Python programming language uses it as its default random number generator.  One must be careful with this, because the Mersenne Twister is \emph{not} suitable for cryptographic purposes. The problem is simply that once a sufficient number of output numbers have been observed, all future output can be predicted.  The algorithm can be modified however, for use in cryptography by passing the output through a secure hashing algorithm\cite{mt}.  Still, there are better options for use in that domain.
+The algorithm has been highly successful and is still in use today in major computer software packages.  Notably, the Python programming language uses it as its default random number generator.  
+
+As a note, the Mersenne Twister is not suitable for cryptographic purposes. The problem is simply that once a sufficient number of output numbers have been observed, all future output can be predicted.  The algorithm can be modified however, for use in cryptography by passing the output through a secure hashing algorithm\cite{mt}.  Still, there are better options for use in that domain.
 
 In the paper itself, we could find no mention of why Mersenne Primes in particular were necessary for this to work.  However, it is easier to test for maximum period when using a Mersenne Prime\cite{mt2}. If this were not the case however, any arbitrary large prime would do just in this role.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,9 +181,9 @@ The world’s largest explicitly known prime numbers have always been Mersenne p
 \end{quote}
 
 Knuth was referring to a special case of Proth primes, numbers of the form $5\cdot2^n-1$.
-Although Knuth seemed to believe that the efficiency of checking for Proth primes would
-eclipse checking for Mersenne Primes. Currently however, the largest known Proth prime has
-been found by the Seventeen or Bust project and is nearly four million digits long\cite{seventeenorbust}.
+Knuth seemed to believe that the efficiency of checking for Proth primes would
+eclipse checking for Mersenne Primes. Currently, however, the largest known Proth prime has
+been found by the Seventeen or Bust project and is nearly four million digits long, only a fraction the size of the largest Mersenne Prime\cite{seventeenorbust}.
 
-So we can see that still today, thirty years later, Mersenne Primes are still leading the way in finding big primes.  Tests have been devised that are more asymptotically efficient that Lucas-Lehmer for different classes of primes, but none have an implementation that can beat what GIMPS has created.  Perhaps one day Mersenne Primes will lose their dominance in this field, but it still doesn't feel like it will be any time soon.
+So, we can see that still today, thirty years later, Mersenne Primes are still leading the way in finding big primes.  Tests have been devised that are more asymptotically efficient that Lucas-Lehmer for different classes of primes, but none have an implementation that can beat what GIMPS has created.  Perhaps one day Mersenne Primes will lose their dominance in this field, but it probably won't be any time soon.
 
