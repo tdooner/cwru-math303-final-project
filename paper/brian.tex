@@ -1,32 +1,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Finding Mersenne Primes}
+\label{sec:gimp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%TODO: talk about the history of finding Mersenne Primes, including the badass...
-%TODO: ...fact that two Mersenne Primes were found the first day of using computers. ~\cite{Robinson54}
+Alan Turing, one of the most brilliant and tragic people of the last century, was arguably the first computer scientist.  He worked on cracking German codes for the British during WWII, and continued his work with the new field of computing after the war.  In 1951, he wrote the first program for testing Mersenne Primes and ran it on a computer at the University of Manchester. Unfortunately, he didn't find any primes\cite{robinson54}. 
+
+In 1952 however, a team in Los Angeles under the direction of D.H. Lehmer ran their own code on a new computer they had built. On its first day of operation, they had already found two new primes!  The constraints they worked under with regard to memory and processing power were impressively small, making their success even more interesting.  It is likely that this success can be at least partially attributed to Lehmer, who improved a test known as the Lucas test which was used for testing the primality of Mersenne Numbers.  The test became known as the Lucas-Lehmer test, and we'll discuss it more in section \ref{sec:llt}.
 
 The advent of the modern computer has allowed us to find larger and larger Mersenne Primes.  The process is fairly straightforward from a high level, but the implementation details are of great importance and interest. The Great Internet Mersenne Prime Search (GIMPS) has been the most successful project in this regard and we will examine their process as an example.  The description of their process comes directly from GIMPS \cite{gimps} in a section on how the math behind the search works. 
 
-First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  %TODO: finish this line of thought and then go into process from THE MATH page  of gimps site
+First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  For most clients this will mean that the run a Lucas-Lehmer test, which we will describe later.  Regardless of what each individual client does, the process to find prime candidates and ultimately Mersenne Primes is:
+\begin{description}
+\item[Forming and Exponent List]  We proved in equation (\ref{eqn:composite}) that $p$ must be prime in order for $2^p - 1$ to be prime.  We'll start out with a list of seed primes that need to be tested.
+\item[Trial Factoring] First we try to find a small factor for the candidate prime.  We take advantage of the fact that any factor of $2^p - 1$ must be of the form $2kp +1$ which we will leave unproven.  Numbers of this form are put through a Sieve of Eratosthenes to reduce the potential factors to prime factors.  Once mostly primes remain, we can try factoring the large prime. If it survives this stage, it will move on to the next.
+\item[Pollard's Method factoring] The large prime now is tested with Pollard's $(p - 1)$ method.  This is an efficient method for finding no-trivially large factors.  The convenient thing about Pollard's method is that we can set a smoothness bound to whatever value we like in order to trade off chances of finding a factor versus time and space.
+\item[Lucas-Lehmer Test] If a prime passes all of the above probabilistic tests, it will get checked with a deterministic algorithm, guaranteed to find whether or not a Mersenne Number is prime.  This test is described in more detail below.
+\item[Double Checking] The math taking place in the last step is extensive and errors are possible.  Prior to any sort of announcement of a new prime being found, we want to be very sure that the number is in fact prime.  Results are double checked on another machine to ensure this.
+\end{description}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Lucas-Lehmer Test}
+\label{sec:llt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Mersenne Primes are interesting in their own right, but the reason that we use them in projects like GIMPS is the Lucas-Lehmer test.  This test makes testing the primality of massive primes possible, and somehow remains simple to understand how it works.  The harder part is understanding why it works, but we'll present a proof that is fairly convincing from Rosen's \emph{A Proof of the Lucas-Lehmer Test}\cite{rosen}.
+This test is relatively easy to understand in a ``what it is doing'' fashion.  The harder part is understanding why it works, but we'll present a proof that is fairly convincing from Rosen's \emph{A Proof of the Lucas-Lehmer Test}\cite{rosen}.
 
 
 \begin{thm} 
-Let $p$ be a prime other than 2 and define a sequence $L_n$ by the rule
+Let $p$ be a prime other than 2 and define a sequence $S_n$ by the rule
 \begin{align}
 \label{eqn:llt}
-L_0 = 4,&&L_{n+1} = L_n^2 - 2 \pmod{2^p - 1}
+S_0 = 4,&&S_{n+1} = S_n^2 - 2 \pmod{2^p - 1}
 \end{align}
-Then $2^p - 1$ is prime iff $L_{p-2} = 0$.
+Then $2^p - 1$ is prime iff $S_{p-2} = 0$.
 \end{thm}
 
-I expect you'll agree that the sequence in (\ref{eqn:llt}) is as easy to comprehend as we promised.  Before we can explore \emph{why} it works, we'll need to make a few definitions.
-
+I expect you'll agree that the sequence in (\ref{eqn:llt}) is as easy to comprehend as we promised. We won't cover the sufficiency of this theorem, but we will show necessity of the condition. The proof of sufficiency can be found in Rosen's article cited above if the reader is curious.    
 \begin{center}
 \begin{math}
 \begin{array}{cccc}
@@ -59,6 +68,7 @@ Thus $T_m = S_m$ for all $m$.
 
 \begin{lem}
 If we assume $M_p$ is prime, then $\tau^{M_p +1} \equiv -1 \pmod{M_p}$. 
+\label{lem:two}
 \end{lem}
 \begin{proof}
 This congruence takes place in the ring of algebraic integers, which are complex numbers that are a root of a polynomial with a leading coefficient of 1 and coefficients in $\mathbb{Z}$.  For the sake of convenience, we'll set $q=M-p$.
@@ -67,7 +77,23 @@ First we will take $\sqrt{2}\tau = 1 + \sqrt{3}$, raise both sides to the $q$th 
 \begin{align*}
 \tau^q2^{(q - 1)/2}\sqrt{2} \equiv 1 + 3^{(q-1)/2}\sqrt{3}\pmod{q}. 
 \end{align*}
-THIS MUST CONTINUE HERE
+Mersenne Primes are congruent to 7 $\pmod{8}$ and congruent to 1 $\pmod{3}$ so we can write $2^{(q-1)/2} \equiv (2/q) \equiv 1 \pmod{q}$ or $3^{(q-1)/2} \equiv (3/q) \equiv -1 \pmod{q}$. It follows that
+\begin{align*}
+\tau^q \equiv \bar{\tau}\pmod{q} \wedge \tau^{q+1} \equiv \tau\bar{\tau} \equiv -1 \pmod{q}.
+\end{align*}
+\end{proof}
+\begin{proof}Now that we have shown these lemmas to be true, we can prove the necessity of the condition for $M_p$ to be prime.  We'll suppose that $M_p$ is prime, and from  lemma \ref{lem:two} we see that 
+\begin{align*}
+\tau^{M_p +1} \equiv -1 \pmod{M_p} \vee \tau^{2^p} + 1 \equiv \pmod{M_p}
+\end{align*}
+We can see from this that
+\begin{align*}
+\tau^2 = \omega &\Rightarrow& \omega^{2^{p-1}} + 1 \equiv 0 \pmod{M_p}
+\end{align*}
+Multiply the congruence with $\bar{\omega}^{2^{p-2}}$ and remember that $\tau\bar{\tau} = 1$. This results in
+\begin{align*}
+S_{p-2} = \omega^{2^{p-2}}+ \bar{\omega}^{2^{p-2}} \equiv 0 \pmod{M_p}
+\end{align*}
 \end{proof}
 
 
@@ -94,22 +120,40 @@ $s = (s^2 - 2) \pmod{M}$
 \End
 \end{codebox}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Efficiency of LLT}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The complexity of this algorithm relies entirely on the step where we square $s$. A naive implementation of squaring would take $O(b^2)$ time with $b$ bit input.  This can be improved however, and the GIMPS project uses an algorithm based on Fast Fourier Transforms in order to do its multiplication. This method can square in $O(b\log{b}\log{\log{b}})$ time.  This operation is done on the order of $p$ times and so with a naive implementation, our total complexity is $O(b^3)$ but with the improved algorithm, it can run in $O(b^2)$. A polynomial time algorithm is quite tractable and can be run on most computers for even large input.  This is the reason that we can distribute the computation to many clients throughout the web. 
+
+The most efficient deterministic algorithm for testing the primality of arbitrary integers is $O(b^6)$, a considerably slower algorithm, making it all but impossible to check for input on the order of the size of the largest Mersenne Primes.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Example with prime}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We can use the Mersenne Prime 7 to show how the algorithm executes when it is run on a prime.
+We can use the Mersenne Prime $7=2^3 -1$ to show how the algorithm executes when it is run on a prime. We only need to perform one step because $p=3$.
+
 \begin{tabular}{ll}
-step 0&s = 4, $M = 2^7 -1 = 63$
+step 0&s = 4, $M = 2^3 -1 = 7$\\\hline
+step 1&s = 4, $s = 4^2 - 2 = 14$
 \end{tabular}
+
+The result is 14 which is 0 $\pmod{7}$ and so this is shown to be a Mersenne Prime.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Example with composite} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We can use 11 to show how the algorithm executes when it is run on a composite number.
+We can use $15 = 2^4 - 1$ to show how the algorithm executes when it is run on a composite number. This time  we'll need two iterations.
 
+\begin{tabular}{ll}
+step 0&s = 4, $M = 2^4 -1 = 15$\\\hline
+step 1&s = 4, $s = 4^2 -2 = 14$\\
+step 2&s = -1, $s = -1^2 -2 = 14$
+\end{tabular}
 
+The result in this case is not congruent to 0, and so we have shown that this is not a Mersenne Prime.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Closing Notes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,10 +163,13 @@ Mersenne Primes are not only studied to satisfy mathematical curiosity.  They ha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mersenne Twister}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-A Mersenne Twister is a psuedo-random number generator which uses a Mersenne Prime as
-its period. It is the PRNG used in Python and in other computing packages.
+In 1998, a paper was published detailing a new random number generator called a \emph{Mersenne Twister}.  This algorithms was the best ever created at that time having a period of $2^{19937} -1$ in addition to an excellent distribution\cite{mt}. Note that this value is a Mersenne Prime, giving this algorithm its name.  The algorithm was developed to generate random reals in the range [0,1], which hints at its intended purpose as a simulation tool. 
+
+The algorithm has been highly successful and is still in use today in major computer software packages.  Notably, the Python programming language uses it as its default random number generator.  One must be careful with this, because the Mersenne Twister is \emph{not} suitable for cryptographic purposes. The problem is simply that once a sufficient number of output numbers have been observed, all future output can be predicted.  The algorithm can be modified however, for use in cryptography by passing the output through a secure hashing algorithm\cite{mt}.  Still, there are better options for use in that domain.
+
+In the paper itself, we could find no mention of why Mersenne Primes in particular were necessary for this to work.  However, it is easier to test for maximum period when using a Mersenne Prime\cite{mt2}. If this were not the case however, any arbitrary large prime would do just in this role.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Other Prime Forms}
+\subsection{Can we do better?}
 \label{sec:knuth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In 1980 Knuth published the second volume of \emph{The Art of Computer Programming}, which contains the following claim.
@@ -134,5 +181,7 @@ The world’s largest explicitly known prime numbers have always been Mersenne p
 Knuth was referring to a special case of Proth primes, numbers of the form $5\cdot2^n-1$.
 Although Knuth seemed to believe that the efficiency of checking for Proth primes would
 eclipse checking for Mersenne Primes. Currently however, the largest known Proth prime has
-been found by the Seventeen or Bust project and is nearly four million digits long.~\cite{seventeenorbust}
+been found by the Seventeen or Bust project and is nearly four million digits long\cite{seventeenorbust}.
+
+So we can see that still today, thirty years later, Mersenne Primes are still leading the way in finding big primes.  Tests have been devised that are more asymptotically efficient that Lucas-Lehmer for different classes of primes, but none have an implementation that can beat what GIMPS has created.  Perhaps one day Mersenne Primes will lose their dominance in this field, but it still doesn't feel like it will be any time soon.
 
