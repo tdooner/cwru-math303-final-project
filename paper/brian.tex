@@ -119,9 +119,10 @@ Mersenne Primes are not only studied to satisfy mathematical curiosity.  They ha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mersenne Twister}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+A Mersenne Twister is a psuedo-random number generator which uses a Mersenne Prime as
+its period. It is the PRNG used in Python and in other computing packages.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Maybe We Can Do Better}
+\subsection{Other Prime Forms}
 \label{sec:knuth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In 1980 Knuth published the second volume of \emph{The Art of Computer Programming}, which contains the following claim.
@@ -130,4 +131,8 @@ In 1980 Knuth published the second volume of \emph{The Art of Computer Programmi
 The world’s largest explicitly known prime numbers have always been Mersenne primes ... But the situation will probably change soon, since Mersenne primes are getting harder to find, and since [the exercises present] an efficient test for primes of other forms. \cite{taocp}
 \end{quote}
 
-%CONTINUE HERE WITH THE STUFF FROM KNUTH
+Knuth was referring to a special case of Proth primes, numbers of the form $5\cdot2^n-1$.
+Although Knuth seemed to believe that the efficiency of checking for Proth primes would
+eclipse checking for Mersenne Primes. Currently however, the largest known Proth prime has
+been found by the Seventeen or Bust project and is nearly four million digits long.~\cite{seventeenorbust}
+
