@@ -1,10 +1,6 @@
-Tue Dec  6 02:06:17 EST 2011
+Fri Dec  9 01:38:52 EST 2011
 ./brian.tex:5:%TODO: talk about the history of finding Mersenne Primes, including the badass...
 ./brian.tex:6:%TODO: ...fact that two Mersenne Primes were found the first day of using computers. ~\cite{Robinson54}
 ./brian.tex:10:First we will note that GIMPS is a distributed computing project.  There is a master server that organizes all of the clients that volunteers run on their own personal computers.  Each of these clients accomplishes a task that is appropriate for their processing power.  %TODO: finish this line of thought and then go into process from THE MATH page  of gimps site
-./brian.tex:16:The Lucas-Lehmer Test (LLT) is arguably the reason that we use Mersenne Numbers as our candidates for very large prime are Mersenne Primes.  It makes %TODO: continue this description. I just want to show math and examples now...
-./brian.tex:18:%TODO: cite this stuff from Knuth later
-./brian.tex:31:%TODO: THAT LAST LINE SUCKS PRETTY BAD, FIX IT
-./evan.tex:10:%TODO: THIS IS DEFINED HERE AND IN SECTION 1.2 THIS IS A PROBLEM! FIX IT!
-./evan.tex:19:%TODO: The last paragraph is nice content wise, but needs to flow better. In fact, the whole paper is like that...
-./paper.tex:44:%\tableofcontents %TODO: add this back in if the paper ends up long enough
+./evan.tex:17:%TODO: The last paragraph is nice content wise, but needs to flow better. In fact, the whole paper is like that...
+./paper.tex:42:%\tableofcontents %TODO: add this back in if the paper ends up long enough

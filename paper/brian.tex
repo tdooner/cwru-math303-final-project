@@ -19,19 +19,55 @@ Mersenne Primes are interesting in their own right, but the reason that we use t
 \begin{thm} 
 Let $p$ be a prime other than 2 and define a sequence $L_n$ by the rule
 \begin{align}
+\label{eqn:llt}
 L_0 = 4,&&L_{n+1} = L_n^2 - 2 \pmod{2^p - 1}
 \end{align}
 Then $2^p - 1$ is prime iff $L_{p-2} = 0$.
 \end{thm}
 
-As mentioned before, the sequence is simple to understand 
+I expect you'll agree that the sequence in (\ref{eqn:llt}) is as easy to comprehend as we promised.  Before we can explore \emph{why} it works, we'll need to make a few definitions.
 
+\begin{center}
+\begin{math}
+\begin{array}{cccc}
+\tau = \dfrac{1 + \sqrt{3}}{\sqrt{2}},&
+\bar{\tau} = \dfrac{1 - \sqrt{3}}{\sqrt{2}},&
+\omega = \tau^2 = 2 + \sqrt{3},&
+\bar{\omega} = \bar{\tau}^2 = 2 - \sqrt{3}
+\end{array}
+\end{math}
+\end{center}
+
+Note that $\tau\bar{\tau} = -1$ and $\omega\bar{\omega} = 1$.
+
+\begin{lem}
+\begin{align*}
+S_m = \omega^{2^{m-1}}+ \bar{\omega}^{2^{m-1}}
+\end{align*}
+\end{lem}
 \begin{proof}
-Define two new sequences
-\begin{align}
-U_0 = 0,& U_1 = 1,& U_{n+1} = 4U_n - U_{n-1}\\ 
-V_0 = 2,& V_1 = 4,& V_{n+1} = 4V_n - V_{n-1}
-\end{align}
+Let $T_m = \omega^{2^{m-1}}+ \bar{\omega}^{2^{m-1}}$.  Then 
+\begin{align*}
+T_1 = \omega + \bar{\omega} = 4 = S_1
+\end{align*}
+ and 
+\begin{align*}
+T_{m+1} = T_m^2 -2  
+\end{align*}
+Thus $T_m = S_m$ for all $m$.
+\end{proof}
+
+\begin{lem}
+If we assume $M_p$ is prime, then $\tau^{M_p +1} \equiv -1 \pmod{M_p}$. 
+\end{lem}
+\begin{proof}
+This congruence takes place in the ring of algebraic integers, which are complex numbers that are a root of a polynomial with a leading coefficient of 1 and coefficients in $\mathbb{Z}$.  For the sake of convenience, we'll set $q=M-p$.
+
+First we will take $\sqrt{2}\tau = 1 + \sqrt{3}$, raise both sides to the $q$th power and take the congruence $\pmod{q}$. This results in
+\begin{align*}
+\tau^q2^{(q - 1)/2}\sqrt{2} \equiv 1 + 3^{(q-1)/2}\sqrt{3}\pmod{q}. 
+\end{align*}
+THIS MUST CONTINUE HERE
 \end{proof}
 
 
@@ -54,7 +90,7 @@ $s = (s^2 - 2) \pmod{M}$
 \Then
 \li\Return True \li
 \Else
-\li\Return False \li
+\li\Return False
 \End
 \end{codebox}
 
